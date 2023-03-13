@@ -1,7 +1,7 @@
 from itertools import *
 import hashlib
 import pandas as pd
-import time 
+#import time 
 
 start = time.time() ## точка отсчета времени
 
@@ -28,7 +28,7 @@ def Luhn(card):
     return checksum % 10 == 0
 count=0
 cards=[]
-carta=[4,1,7,3, 9,8,0,0, 0,0,0,0, 0,0,0,0]
+carta=[4,1,7,3, 9,8,0,0, 0,0,0,0, 0,0,0,0] # Здесь пишем отправную комбинацию, следите за тем, чтобы была валидное кол-во цифр в наборе
 while True:
     for i in range(10):
         carta[15]=carta[15]+1
@@ -83,7 +83,7 @@ while True:
         #    break    
 
         number = str(carta[0])+str(carta[1])+str(carta[2])+str(carta[3])+str(carta[4])+str(carta[5])+str(carta[6])+str(carta[7])+str(carta[8])+str(carta[9])+str(carta[10])+str(carta[11])+str(carta[12])+str(carta[13])+str(carta[14])+str(carta[15])
-        if number == '4280000000000000':
+        if number == '4280000000000000': # до какого момента генерим карты +1 в последней цифре бина, например бин от 4173 98 до 4279 99, значит в этой строке будет 4280 00 (427999+1=428000 )
             break
         if Luhn(number)==True:
             m = hashlib.sha1()
@@ -97,7 +97,7 @@ while True:
             count+=1
             print(number)
             if count%20==0:
-                with open('cards1.txt', 'a') as f:
+                with open('cards1.txt', 'a') as f: # файл сохранится там же, где файл .py, название файла cards1.txt
                     f.write(str(result) + '\n')
                     cards=[]
                     count=0
