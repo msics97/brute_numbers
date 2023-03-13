@@ -1,7 +1,7 @@
 from itertools import *
 import hashlib
-import pandas as pd
-#import time 
+#import pandas as pd
+import time 
 
 start = time.time() ## точка отсчета времени
 
